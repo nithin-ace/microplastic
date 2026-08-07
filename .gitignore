@@ -151,11 +151,18 @@ activemq-data/
 .env
 .envrc
 .venv
+.venv*/
+venv311/
 env/
+env*/
 venv/
+venv*/
 ENV/
 env.bak/
 venv.bak/
+
+# Ignore large model files
+yolov8n.pt
 
 # Spyder project settings
 .spyderproject
