@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MicroAsser System</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    height:90vh;
+    background: url("../static/images/bg.png") no-repeat center/cover;
+    color:#fff;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 60px;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo i{
+    font-size:32px;
+    color:#38bdf8;
+    text-shadow:0 0 12px rgba(56,189,248,0.8);
+    transition:0.3s;
+}
+
+.logo span{
+    font-family:'Orbitron', sans-serif;
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.6),
+        0 0 25px rgba(56,189,248,0.8);
+}
+
+/* LOGO HOVER */
+.logo:hover span{
+    color:#38bdf8;
+    text-shadow:
+        0 0 20px rgba(56,189,248,1),
+        0 0 40px rgba(56,189,248,1);
+}
+
+.logo:hover i{
+    transform:rotate(10deg) scale(1.1);
+}
+
+/* NAV LINKS */
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#fff;
+    padding:8px 18px;
+    border-radius:20px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+nav ul li a.active{
+    background:#38bdf8;
+    box-shadow:0 0 12px rgba(56,189,248,0.8);
+}
+
+nav ul li a:hover{
+    background:rgba(56,189,248,0.2);
+}
+
+/* HERO */
+.hero{
+    height:calc(100vh - 100px);
+    display:flex;
+    align-items:center;
+    padding-left:80px;
+}
+
+/* CONTENT */
+.content{
+    max-width:550px;
+}
+
+/* TITLE */
+.hero-title{
+    font-size:75px;
+    font-weight:800;
+    line-height:1.1;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    color:#f2f2f2;
+    text-shadow:0 0 10px rgba(255,255,255,0.3);
+}
+
+.hero-title span{
+    color:#38bdf8;
+    text-shadow:0 0 15px rgba(56,189,248,0.8);
+}
+
+/* TEXT */
+.hero-sub{
+    margin-top:20px;
+    font-size:17px;
+    color:#ddd;
+    line-height:1.6;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:30px;
+    padding:14px 30px;
+    border:none;
+    border-radius:30px;
+
+    background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px rgba(56,189,248,0.9);
+}
+
+/* SOCIAL */
+.social{
+    margin-top:45px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.social span{
+    font-size:14px;
+}
+
+/* ICONS */
+.icons a{
+    text-decoration:none;
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.5);
+    padding:8px 10px;
+    border-radius:50%;
+    margin-right:10px;
+    transition:0.3s;
+}
+
+.icons a:hover{
+    background:#38bdf8;
+    border-color:#38bdf8;
+    box-shadow:0 0 10px rgba(56,189,248,0.8);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-flask"></i>
+        <span>MICROASSER</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/login">User</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="content">
+
+        <h1 class="hero-title">
+            MICROPLASTICS <br>
+            <span>DETECTION SYSTEM</span>
+        </h1>
+
+        <p class="hero-sub">
+            AI-powered analysis for detecting and quantifying microplastic contamination 
+            in liquid consumables using advanced deep learning models.
+        </p>
+
+        <button class="btn" onclick="window.location.href='/dashboard'">
+            Explore Now
+        </button>
+
+        <div class="social">
+            <span>www.sciencelab.com</span>
+
+            <div class="icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

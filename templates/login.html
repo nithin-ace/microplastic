@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login | MicroAsser</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    height:100vh;
+    background: url("../static/images/bg2.png") no-repeat center/cover;
+    color:#fff;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 60px;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo i{
+    font-size:28px;
+    color:#38bdf8; /* SKY BLUE */
+}
+
+.logo span{
+    font-family:'Orbitron',sans-serif;
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+/* NAV LINKS */
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#fff;
+    padding:6px 16px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+nav ul li a.active{
+    background:#38bdf8; /* SKY BLUE */
+}
+
+/* MAIN LAYOUT */
+.container{
+    display:flex;
+    height:calc(100vh - 90px);
+    align-items:center;
+    justify-content:space-between;
+    padding:0 80px;
+}
+
+/* LEFT HERO */
+.hero{
+    max-width:500px;
+}
+
+.hero h1{
+    font-size:50px;
+    font-weight:800;
+    line-height:1.2;
+}
+
+.hero span{
+    color:#38bdf8; /* SKY BLUE */
+}
+
+.hero p{
+    margin-top:20px;
+    color:#ddd;
+    font-size:15px;
+}
+
+/* LOGIN CARD */
+.login-box{
+    width:350px;
+    padding:30px;
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.2),
+        inset 0 0 10px rgba(255,255,255,0.05);
+}
+
+/* INPUTS */
+.input-group input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-top:5px;
+    outline:none;
+
+    background:rgba(255,255,255,0.15);
+    color:#fff;
+}
+
+/* SELECT */
+.input-group select{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-top:5px;
+    outline:none;
+
+    background:rgba(255,255,255,0.2);
+    color:#fff;
+
+    appearance:none;
+}
+
+/* DROPDOWN OPTIONS */
+select option{
+    background:#002a3a; /* dark blue */
+    color:#fff;
+}
+
+select option:hover{
+    background:#38bdf8;
+}
+
+/* PLACEHOLDER */
+input::placeholder{
+    color:#ddd;
+}
+
+select{
+    color:#fff;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:30px;
+    margin-top:20px;
+
+    background:linear-gradient(135deg,#38bdf8,#0ea5e9); /* SKY BLUE GRADIENT */
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px rgba(56,189,248,0.7);
+}
+
+/* GLOW EFFECT */
+.login-box::before{
+    content:"";
+    position:absolute;
+    width:200px;
+    height:200px;
+    background:radial-gradient(circle,#38bdf8,transparent);
+    top:-50px;
+    right:-50px;
+    opacity:0.2;
+    filter:blur(80px);
+    z-index:-1;
+}
+
+/* ERROR */
+.error{
+    color:#ff6b6b;
+    font-size:14px;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+/* REGISTER */
+.register{
+    text-align:center;
+    margin-top:15px;
+    font-size:14px;
+}
+
+.register a{
+    color:#38bdf8;
+    text-decoration:none;
+    font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">
+        <i class="fa-solid fa-flask"></i>
+        <span>MICROASSER</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/login" class="active">User</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="hero">
+        <h1>LOGIN TO ACCESS<br><span>MICROPLASTICS DETECTION</span></h1>
+
+        <p>
+            Secure login to access AI-powered microplastic detection,
+            analysis dashboard, and contamination insights.
+        </p>
+    </div>
+
+    <!-- RIGHT LOGIN FORM -->
+    <div class="login-box">
+
+        <h2>Login</h2>
+
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+
+            <div class="input-group">
+                <label>Role</label>
+                <select name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="user">User</option>
+                    <option value="lab">Lab Technician</option>
+                    <option value="researcher">Researcher</option>
+                    <option value="authority">Food Safety Authority</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button class="btn">Login</button>
+
+        </form>
+
+        <div class="register">
+            Don’t have an account? 
+            <a href="/register">Register</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

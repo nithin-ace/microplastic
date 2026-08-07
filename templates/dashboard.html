@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>User Dashboard</title>
+
+<link href="../static/css/bootstrap.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+body{
+    background:linear-gradient(135deg,#eef2ff,#e0e7ff);
+    font-family:"Segoe UI",sans-serif;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+    position:fixed;
+    width:260px;
+    height:100%;
+    background:linear-gradient(180deg,#020617,#1e3a8a,#1d4ed8);
+    padding:20px;
+    box-shadow:6px 0 30px rgba(0,0,0,.2);
+}
+
+.sidebar .logo{
+    text-align:center;
+    color:#fff;
+    font-weight:700;
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    margin-bottom:12px;
+    color:#c7d2fe;
+    border-radius:12px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.sidebar a i{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.sidebar a:hover{
+    background:rgba(255,255,255,0.1);
+    color:#fff;
+    transform:translateX(6px);
+}
+
+.sidebar a.active{
+    background:linear-gradient(90deg,#2563eb,#3b82f6);
+    color:#fff;
+}
+
+/* ===== MAIN ===== */
+.main{
+    margin-left:260px;
+    padding:25px 40px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar-custom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:linear-gradient(90deg,#1e3a8a,#2563eb);
+    padding:15px 25px;
+    border-radius:18px;
+    color:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.nav-icons{
+    display:flex;
+    gap:15px;
+}
+
+.nav-icons a{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    transition:.3s;
+}
+
+.nav-icons a:hover{
+    background:#fff;
+    color:#1d4ed8;
+    transform:scale(1.1);
+}
+
+/* ===== UPLOAD CARD ===== */
+.upload-card{
+    margin-top:60px;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* ===== DOTTED UPLOAD BOX ===== */
+.upload-box{
+    border:2px dashed #2563eb;
+    border-radius:15px;
+    padding:40px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.upload-box:hover{
+    background:#eef2ff;
+    border-color:#1d4ed8;
+}
+
+.upload-box i{
+    font-size:40px;
+    color:#2563eb;
+}
+
+.upload-box p{
+    margin-top:10px;
+    color:#64748b;
+}
+
+/* HIDE INPUT */
+input[type="file"]{
+    display:none;
+}
+
+/* BUTTON */
+.btn-upload{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:#fff;
+    font-weight:500;
+    box-shadow:0 10px 25px rgba(37,99,235,0.4);
+    transition:.3s;
+}
+
+.btn-upload:hover{
+    transform:scale(1.05);
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+}
+
+/* FILE NAME */
+.file-name{
+    margin-top:10px;
+    font-size:14px;
+    color:#1e3a8a;
+}
+
+footer{
+    text-align:center;
+    margin-top:40px;
+    color:#64748b;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">
+        <i class="bi bi-droplet-half"></i> Microplastic
+    </div>
+
+    <a class="active" href="#">
+        <i class="bi bi-upload"></i> Upload
+    </a>
+
+    <a href="/logout">
+        <i class="bi bi-box-arrow-right"></i> Logout
+    </a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- NAVBAR -->
+<div class="navbar-custom">
+    <div>User Dashboard</div>
+
+    <div class="nav-icons">
+        <a href="#"><i class="bi bi-bell"></i></a>
+        <a href="/logout"><i class="bi bi-box-arrow-right"></i></a>
+    </div>
+</div>
+
+<!-- UPLOAD CARD -->
+<div class="upload-card">
+
+    <h4>Upload Image for Detection</h4>
+
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+
+        <label class="upload-box">
+            <i class="bi bi-cloud-upload"></i>
+            <p>Click or Drag Image Here</p>
+            <input type="file" name="image" id="fileInput" required>
+        </label>
+
+        <div class="file-name" id="fileName"></div>
+
+        <button class="btn-upload">🔍 Predict</button>
+
+    </form>
+
+</div>
+
+<footer>
+© Microplastic Detection System
+</footer>
+
+</div>
+
+<script>
+// SHOW FILE NAME
+document.getElementById("fileInput").addEventListener("change", function(){
+    const fileName = this.files[0]?.name || "";
+    document.getElementById("fileName").innerText = fileName;
+});
+</script>
+
+</body>
+</html>

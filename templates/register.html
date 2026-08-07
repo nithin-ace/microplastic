@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register | MicroAsser</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    height:100vh;
+    background: url("../static/images/bg2.png") no-repeat center/cover;
+    color:#fff;
+    overflow:hidden;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 60px;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo i{
+    font-size:28px;
+    color:#38bdf8; /* SKY BLUE */
+}
+
+.logo span{
+    font-family:'Orbitron',sans-serif;
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+/* NAV LINKS */
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#fff;
+    padding:6px 16px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+nav ul li a.active{
+    background:#38bdf8; /* SKY BLUE */
+}
+
+nav ul li a:hover{
+    background:rgba(56,189,248,0.2);
+}
+
+/* MAIN */
+.container{
+    display:flex;
+    height:calc(100vh - 90px);
+    align-items:center;
+    justify-content:space-between;
+    padding:0 80px;
+}
+
+/* HERO LEFT */
+.hero{
+    max-width:480px;
+}
+
+.hero h1{
+    font-size:46px;
+    font-weight:800;
+    line-height:1.2;
+}
+
+.hero span{
+    color:#38bdf8; /* SKY BLUE */
+}
+
+.hero p{
+    margin-top:18px;
+    color:#ddd;
+    font-size:15px;
+    line-height:1.5;
+}
+
+/* REGISTER BOX */
+.register-box{
+    width:320px;
+    padding:22px 20px;
+    border-radius:16px;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,0.25),
+        inset 0 0 8px rgba(255,255,255,0.05);
+
+    position:relative;
+}
+
+/* TITLE */
+.register-box h2{
+    text-align:center;
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+/* INPUT GROUP */
+.input-group{
+    margin-bottom:8px;
+    position:relative;
+}
+
+.input-group label{
+    font-size:13px;
+}
+
+/* INPUTS */
+.input-group input,
+.input-group select{
+    width:100%;
+    padding:8px;
+    border:none;
+    border-radius:8px;
+    margin-top:4px;
+    outline:none;
+
+    background:rgba(255,255,255,0.18);
+    color:#fff;
+    font-size:14px;
+}
+
+/* PLACEHOLDER */
+input::placeholder{
+    color:#ddd;
+}
+
+/* DROPDOWN */
+.input-group select{
+    appearance:none;
+    padding-right:35px;
+}
+
+/* OPTIONS */
+select option{
+    background:#002a3a; /* DARK BLUE */
+    color:#fff;
+}
+
+/* CUSTOM ARROW */
+.input-group::after{
+    content:"\f078";
+    font-family:"Font Awesome 6 Free";
+    font-weight:900;
+    position:absolute;
+    right:10px;
+    top:34px;
+    color:#fff;
+    pointer-events:none;
+    font-size:12px;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:25px;
+    margin-top:10px;
+
+    background:linear-gradient(135deg,#38bdf8,#0ea5e9); /* SKY BLUE */
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    font-size:14px;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 12px rgba(56,189,248,0.7);
+}
+
+/* LOGIN LINK */
+.login-link{
+    text-align:center;
+    margin-top:12px;
+    font-size:13px;
+}
+
+.login-link a{
+    color:#38bdf8;
+    font-weight:600;
+    text-decoration:none;
+}
+
+/* SCROLL */
+.register-box{
+    max-height:85vh;
+    overflow-y:auto;
+}
+
+/* SCROLLBAR */
+.register-box::-webkit-scrollbar{
+    width:5px;
+}
+
+.register-box::-webkit-scrollbar-thumb{
+    background:#38bdf8; /* SKY BLUE */
+    border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <i class="fa-solid fa-flask"></i>
+        <span>MICROASSER</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/login" class="active">User</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+
+    <!-- LEFT -->
+    <div class="hero">
+        <h1>CREATE YOUR<br><span>ACCOUNT</span></h1>
+
+        <p>
+            Register to access microplastic detection tools,
+            analytics dashboard, and safety insights.
+        </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="register-box">
+
+        <h2 style="text-align:center;margin-bottom:15px;">Register</h2>
+
+        <form method="POST">
+
+            <div class="input-group">
+                <label>Role</label>
+                <select name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="user">User</option>
+                    <option value="lab">Lab Technician</option>
+                    <option value="researcher">Researcher</option>
+                    <option value="authority">Food Safety Authority</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Mobile</label>
+                <input type="text" name="mobile" required>
+            </div>
+
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button class="btn">Register</button>
+
+        </form>
+
+        <div class="login-link">
+            Already have an account? <a href="/login">Login</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

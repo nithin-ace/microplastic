@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Detection Result</title>
+
+<link href="../static/css/bootstrap.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+body{
+    background:linear-gradient(135deg,#eef2ff,#e0e7ff);
+    font-family:"Segoe UI",sans-serif;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+    position:fixed;
+    width:260px;
+    height:100%;
+    background:linear-gradient(180deg,#020617,#1e3a8a,#1d4ed8);
+    padding:20px;
+    box-shadow:6px 0 30px rgba(0,0,0,.2);
+}
+
+.sidebar .logo{
+    text-align:center;
+    color:#fff;
+    font-weight:700;
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    margin-bottom:12px;
+    color:#c7d2fe;
+    border-radius:12px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.sidebar a i{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.sidebar a:hover{
+    background:rgba(255,255,255,0.1);
+    color:#fff;
+    transform:translateX(6px);
+}
+
+.sidebar a.active{
+    background:linear-gradient(90deg,#2563eb,#3b82f6);
+    color:#fff;
+}
+
+/* ===== MAIN ===== */
+.main{
+    margin-left:260px;
+    padding:25px 40px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar-custom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:linear-gradient(90deg,#1e3a8a,#2563eb);
+    padding:15px 25px;
+    border-radius:18px;
+    color:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.nav-icons{
+    display:flex;
+    gap:15px;
+}
+
+.nav-icons a{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    transition:.3s;
+}
+
+.nav-icons a:hover{
+    background:#fff;
+    color:#1d4ed8;
+    transform:scale(1.1);
+}
+
+/* ===== TITLE ===== */
+.title-card{
+    margin-top:25px;
+    background:#fff;
+    padding:20px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    border-left:6px solid #2563eb;
+}
+
+.title-card h3{
+    margin:0;
+    color:#1e3a8a;
+}
+
+/* ===== CONTENT ===== */
+.content{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+/* IMAGE */
+.image-box{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.image-box img{
+    width:100%;
+    border-radius:12px;
+}
+
+/* RESULT CARDS */
+.result-box{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.card{
+    background:#fff;
+    padding:15px 20px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    border-left:5px solid #2563eb;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(37,99,235,0.2);
+}
+
+/* STATUS COLORS */
+.success{ color:#16a34a; font-weight:600; }
+.warning{ color:#f59e0b; font-weight:600; }
+.danger{ color:#ef4444; font-weight:600; }
+
+/* ===== GRAPH GRID ===== */
+.graph-grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+.graph-box{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:.3s;
+    border:2px solid transparent;
+}
+
+.graph-box:hover{
+    transform:translateY(-8px);
+    border:2px solid #2563eb;
+    box-shadow:0 15px 40px rgba(37,99,235,0.3);
+}
+
+.graph-box img{
+    width:100%;
+    border-radius:10px;
+}
+
+.graph-box h5{
+    text-align:center;
+    margin-bottom:10px;
+    color:#1e3a8a;
+}
+
+/* BUTTON */
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 30px;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    border-radius:12px;
+    color:#fff;
+    text-decoration:none;
+    box-shadow:0 10px 25px rgba(37,99,235,0.4);
+    transition:.3s;
+}
+
+.back-btn:hover{
+    transform:scale(1.05);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .content{
+        grid-template-columns:1fr;
+    }
+}
+
+footer{
+    text-align:center;
+    margin-top:40px;
+    color:#64748b;
+}
+.insight-box{
+    background:linear-gradient(135deg,#ecfeff,#cffafe);
+    border-left:6px solid #06b6d4;
+    padding:18px;
+    border-radius:14px;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.recommend-box{
+    background:linear-gradient(135deg,#f0fdf4,#dcfce7);
+    border-left:6px solid #22c55e;
+    padding:18px;
+    border-radius:14px;
+    font-size:14px;
+    line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">
+        <i class="bi bi-droplet-half"></i> Microplastic
+    </div>
+
+    <a href="/dashboard">
+        <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+
+    <a class="active" href="#">
+        <i class="bi bi-search"></i> Detection Result
+    </a>
+
+    <a href="/logout">
+        <i class="bi bi-box-arrow-right"></i> Logout
+    </a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- NAVBAR -->
+<div class="navbar-custom">
+    <div>Detection Result</div>
+
+    <div class="nav-icons">
+        <a href="#"><i class="bi bi-bell"></i></a>
+        <a href="/logout"><i class="bi bi-box-arrow-right"></i></a>
+    </div>
+</div>
+
+<!-- TITLE -->
+<div class="title-card">
+    <h3>🔬 Microplastic Detection Result</h3>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- IMAGE -->
+<div class="image-box">
+    <img src="/{{image}}">
+</div>
+
+<!-- RESULTS -->
+<div class="result-box">
+{% if detected == "YES" %}
+<div class="card">🧪 Sample Type: <span class="warning">{{sample_type}}</span></div>
+{% else %}
+<div class="card success">No microplastics detected</div>
+{% endif %}
+<div class="card">
+Microplastic Detection Result:
+<span class="{% if detected=='YES' %}danger{% else %}success{% endif %}">
+{{detected}}
+</span>
+</div>
+
+{% if detected == "YES" %}
+
+<div class="card">Count: <span class="warning">{{count}}</span></div>
+<div class="card">Concentration  litre : <span class="warning">{{concentration}}</span></div>
+<div class="card">🎯 Confidence: <span class="success">{{sample_conf}}%</span></div>
+<div class="card">Level: <span class="danger">{{level}}</span></div>
+<div class="insight-box">
+    <strong>🧠 Health Insight</strong><br><br>
+    {{insight}}
+</div>
+
+<div class="recommend-box">
+    <strong>💡 Recommendation</strong><br><br>
+    {{recommendation}}
+</div>
+
+{% else %}
+<div class="card success">No microplastics detected</div>
+{% endif %}
+
+</div>
+
+</div>
+
+
+<!-- ===== GRAPHS ===== -->
+<div class="graph-grid">
+
+{% if accuracy_graph %}
+<div class="graph-box">
+<h5>📈 Training vs Validation Accuracy</h5>
+<img src="data:image/png;base64,{{accuracy_graph}}">
+</div>
+{% endif %}
+
+{% if hist_graph %}
+<div class="graph-box">
+<h5>📊 Microplastic vs Background Histogram</h5>
+<img src="data:image/png;base64,{{hist_graph}}">
+</div>
+{% endif %}
+
+{% if surface_graph %}
+<div class="graph-box">
+<h5>🌊 3D Surface Microplastic Highlight</h5>
+<img src="data:image/png;base64,{{surface_graph}}">
+</div>
+{% endif %}
+
+</div>
+
+<a href="/download_report/{{report_id}}" class="back-btn">
+    📄 Download Report
+</a>
+
+<div style="text-align:center;">
+    <a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+</div>
+
+<footer>
+© Microplastic Detection System
+</footer>
+
+</div>
+
+</body>
+</html>

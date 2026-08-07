@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Microplastic Admin Dashboard</title>
+
+<link href="../static/css/bootstrap.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+body{
+    background:linear-gradient(135deg,#eef2ff,#e0e7ff);
+    font-family:"Segoe UI",sans-serif;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+    position:fixed;
+    width:260px;
+    height:100%;
+    background:linear-gradient(180deg,#020617,#1e3a8a,#1d4ed8);
+    padding:20px;
+    box-shadow:6px 0 30px rgba(0,0,0,.2);
+}
+
+/* TITLE */
+.sidebar .logo{
+    text-align:center;
+    color:#fff;
+    font-weight:700;
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+/* MENU */
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    margin-bottom:12px;
+    color:#c7d2fe;
+    border-radius:12px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+/* ROUND ICON */
+.sidebar a i{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* HOVER */
+.sidebar a:hover{
+    background:rgba(255,255,255,0.1);
+    color:#fff;
+    transform:translateX(6px);
+}
+
+/* ACTIVE */
+.sidebar a.active{
+    background:linear-gradient(90deg,#2563eb,#3b82f6);
+    color:#fff;
+    box-shadow:0 0 12px rgba(59,130,246,.6);
+}
+
+/* ===== MAIN ===== */
+.main{
+    margin-left:260px;
+    padding:25px 40px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar-custom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:linear-gradient(90deg,#1e3a8a,#2563eb);
+    padding:15px 25px;
+    border-radius:18px;
+    color:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* RIGHT ICONS */
+.nav-icons{
+    display:flex;
+    gap:15px;
+}
+
+.nav-icons a{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    transition:.3s;
+}
+
+.nav-icons a:hover{
+    background:#fff;
+    color:#1d4ed8;
+    transform:scale(1.1);
+}
+
+/* ===== CARD ===== */
+.card-box{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    width:320px;
+    transition:.4s;
+    border:2px solid transparent;
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+
+/* BORDER GLOW */
+.card-box:hover{
+    transform:translateY(-10px);
+    border:2px solid #2563eb;
+    box-shadow:0 20px 50px rgba(37,99,235,.3);
+}
+
+/* ICON */
+.icon-circle{
+    width:75px;
+    height:75px;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.icon-circle i{
+    font-size:28px;
+    color:#fff;
+}
+
+/* TEXT */
+.card-box h5{
+    font-weight:600;
+}
+
+.card-box p{
+    font-size:14px;
+    color:#64748b;
+    margin:0;
+}
+
+/* BUTTON */
+.btn-go{
+    margin-top:15px;
+    border-radius:10px;
+}
+
+/* CENTER */
+.center-row{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:60px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    margin-top:60px;
+    color:#64748b;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">
+        <i class="bi bi-droplet-half"></i> Microplastic
+    </div>
+
+    <a class="active" href="/admin">
+        <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+
+    <a href="/train_start">
+        <i class="bi bi-cpu"></i> Train Model
+    </a>
+
+    <a href="/admin_users">
+        <i class="bi bi-people"></i> Users
+    </a>
+
+    <a href="/logout">
+        <i class="bi bi-box-arrow-right"></i> Logout
+    </a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- NAVBAR -->
+<div class="navbar-custom">
+    <div>Admin Dashboard</div>
+
+    <div class="nav-icons">
+        <a href="#"><i class="bi bi-bell"></i></a>
+        <a href="/logout"><i class="bi bi-box-arrow-right"></i></a>
+    </div>
+</div>
+
+<!-- CARDS -->
+<div class="center-row">
+
+    <!-- CARD 1 -->
+    <div class="card-box">
+        <div class="icon-circle">
+            <i class="bi bi-cpu"></i>
+        </div>
+
+        <h5>Train Detection Model</h5>
+        <p>Train AI with microplastic datasets.</p>
+        <p>Improve detection accuracy smartly.</p>
+
+        <a href="/train_start" class="btn btn-primary btn-go">Open</a>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card-box">
+        <div class="icon-circle" style="background:linear-gradient(135deg,#16a34a,#22c55e);">
+            <i class="bi bi-people"></i>
+        </div>
+
+        <h5>Manage Users</h5>
+        <p>Handle roles and permissions easily.</p>
+        <p>Control researchers & technicians.</p>
+
+        <a href="/admin_users" class="btn btn-success btn-go">Open</a>
+    </div>
+
+</div>
+
+<footer>
+© Microplastic Detection Admin Panel
+</footer>
+
+</div>
+
+</body>
+</html>
